@@ -28,7 +28,7 @@ struct Customer {
     high_resolution_clock::time_point endTime;     // End time of car rental
 };
 
-// Function prototypes
+// declere function
 void addCar(vector<Car>& cars, const string& model, const string& made, int year, double paymentPerSecond);
 void displayCars(const vector<Car>& cars);
 void addUser(vector<Customer>& customers);
