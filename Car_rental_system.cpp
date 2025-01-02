@@ -28,27 +28,29 @@ struct Customer {
     high_resolution_clock::time_point endTime;     // End time of car rental
 };
 
-// Declare functions
-void addCar(vector<Car>& cars, const string& model, const string& made, int year, double paymentPerSecond);
-void displayCars(const vector<Car>& cars);
-void addUser(vector<Customer>& customers);
-void rentCar(vector<Car>& cars, vector<Customer>& customers);
-void returnCar(vector<Customer>& customers);
-void handlePayment(vector<Customer>& customers);
-void generateReport(const vector<Car>& cars, const vector<Customer>& customers);
-
 int main() {
-    vector<Car> cars;            // List to store available cars
-    vector<Customer> customers;  // List to store registered customers
+    vector<Car> cars;
+    vector<Customer> customers;
+    double totalRevenue = 0.0; // Track total revenue generated
 
-    // Add some initial cars to the system
-    addCar(cars, "Toyota Corolla", "Toyota", 2022, 0.01);
-    addCar(cars, "Ford Mustang", "Ford", 2021, 0.01);
-    addCar(cars, "Honda Civic", "Honda", 2020, 0.02);
-    addCar(cars, "Chevrolet Camaro", "Chevrolet", 2019, 0.03);
+    // Preload cars
+  addCar(cars, "Toyota Corolla", "Toyota", 2022, 0.01);
+  addCar(cars, "Ford Mustang", "Ford", 2021, 0.02);
+  addCar(cars, "Honda Civic", "Honda", 2020, 0.03);
+  addCar(cars, "Chevrolet Camaro", "Chevrolet", 2019, 0.04);
+  addCar(cars, "Tesla Model S", "Tesla", 2023, 0.05);
+  addCar(cars, "BMW 3 Series", "BMW", 2022, 0.04);
+  addCar(cars, "Mercedes-Benz C-Class", "Mercedes", 2021, 0.04);
+  addCar(cars, "Audi A4", "Audi", 2021, 0.03);
+  addCar(cars, "Nissan Altima", "Nissan", 2020, 0.02);
+  addCar(cars, "Hyundai Sonata", "Hyundai", 2019, 0.02);
+  addCar(cars, "Volkswagen Passat", "Volkswagen", 2023, 0.03);
+  addCar(cars, "Kia Optima", "Kia", 2022, 0.02);
+  addCar(cars, "Subaru Outback", "Subaru", 2020, 0.03);
+  addCar(cars, "Mazda CX-5", "Mazda", 2021, 0.03);
+  addCar(cars, "Jeep Wrangler", "Jeep", 2023, 0.05);
 
     while (true) {
-        // Display the main menu
         cout << "\n-----------------------------------" << endl;
         cout << "      Welcome to Car Rental System" << endl;
         cout << "-----------------------------------" << endl;
@@ -57,41 +59,43 @@ int main() {
         cout << "3. Rent a Car" << endl;
         cout << "4. Return a Car" << endl;
         cout << "5. Check Payment Details" << endl;
-        cout << "6. Exit" << endl;
+        cout << "6. Generate Report" << endl;
+        cout << "7. Exit" << endl;
         cout << "-----------------------------------" << endl;
-        cout << "Enter your choice (1-6): ";
+        cout << "Enter your choice (1-7): ";
 
         int choice;
         cin >> choice;
 
-        // Check for invalid input
-        if (cin.fail() || choice < 1 || choice > 6) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nInvalid input. Please enter a number between 1 and 6.\n" << endl;
+        if (cin.fail()  choice < 1  choice > 7) {
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cout << "\nInvalid input. Please enter a number between 1 and 7.\n" << endl;
             continue;
         }
 
-        // Handle user menu selection
         switch (choice) {
             case 1:
-                addUser(customers);  // Register a new user
+                addUser(customers);
                 break;
             case 2:
-                displayCars(cars);  // Display available cars
+                displayCars(cars);
                 break;
             case 3:
-                rentCar(cars, customers);  // Rent a car
+                rentCar(cars, customers);
                 break;
             case 4:
-                returnCar(customers);  // Return a car
+                returnCar(customers);
                 break;
             case 5:
-                handlePayment(customers);  // Handle payment details
+                handlePayment(customers);
                 break;
             case 6:
+                generateReport(cars, customers);
+                break;
+            case 7:
                 cout << "\nThank you for using the Car Rental System. Have a great day!\n" << endl;
-                return 0;  // Exit the program
+                return 0;
             default:
                 cout << "\nAn unexpected error occurred. Please try again.\n" << endl;
                 break;
