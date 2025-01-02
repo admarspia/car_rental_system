@@ -1,148 +1,86 @@
-readme
 # Car Rental System
 
-A C++ project that simulates a **Car Rental System** integrated with a **Banking System**. This system allows customers to rent cars and pay their bills using their bank accounts. It demonstrates object-oriented programming principles, such as encapsulation, inheritance, and polymorphism.
-
----
+A simple and interactive car rental system implemented in C++. This project allows users to register, view available cars, rent a car, return it, and calculate payment based on the duration of the rental.
 
 ## Features
+- **User Registration**: Allows new customers to register with their details.
+- **View Available Cars**: Displays all cars available for rent, including their make, model, year, and rental rate.
+- **Rent a Car**: Users can rent a car by specifying the car's make, model, and year.
+- **Return a Car**: Users can return rented cars and make them available for others.
+- **Payment Calculation**: Calculates the total payment based on the duration of the rental and the car's rate.
 
-### **Customer Module**
-- Register a new customer.
-- View available cars for rent.
-- Rent a car and generate a bill.
-- Check outstanding bills.
+## Technologies Used
+- Language: **C++**
+- Libraries:
+  - `<iostream>` for input and output.
+  - `<string>` for string manipulations.
+  - `<vector>` for managing dynamic lists of cars and customers.
+  - `<algorithm>` for sorting and searching.
+  - `<chrono>` for handling time-based calculations.
+  - `<iomanip>` for formatted output.
 
-### **Bank Module**
-- Register a bank customer.
-- View account details and balance.
-- Pay car rental bills directly from the bank account.
+## How to Run
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/car-rental-system.git
 
-### **Admin Module**
-- Add new cars to the system.
-- Manage car availability.
-- View all registered customers.
+    Navigate to the Project Directory:
 
----
-
-## Project Structure
-
-- **Classes**:
-  - `Customer`: Represents a customer who rents cars.
-  - `Car`: Represents a car available for rent.
-  - `System`: Manages all customers and cars.
-  - `Bank_Customer`: Represents a customer with a bank account.
-  - `BankSystem`: Manages all bank customers and payment transactions.
-
-- **Core Functionalities**:
-  - `rent_car()`: Allows a customer to rent a car.
-  - `Pay_using_bank()`: Processes bill payments through the banking system.
-  - `view_available_cars()`: Displays all cars available for rent.
-
----
-
-## Installation and Setup
-
-### **1. Prerequisites**
-- A C++ compiler (e.g., GCC, Clang, or MSVC).
-- Basic knowledge of C++.
-
-### **2. Clone the Repository**
-```bash
-git clone https://github.com/admarspia/car-rental-system.git
 cd car-rental-system
-```
 
-### **3. Compile the Code**
-Use a C++ compiler to compile the source code. For example, with `g++`:
-```bash
-g++ -o car_rental main.cpp
-```
+Compile the Program: Use a C++ compiler like g++:
 
-### **4. Run the Program**
-```bash
-./car_rental
-```
+g++ -o car_rental car_rental.cpp
 
----
+Run the Program:
 
-## Usage Guide
+    ./car_rental
 
-### **Main Menu**
-1. **Customer Options**
-   - Register as a new customer.
-   - Rent a car and generate a bill.
-   - Check your outstanding bill.
+Usage
 
-2. **Bank Options**
-   - Register a new bank account.
-   - Pay your car rental bill.
+    Run the program.
+    Choose from the menu options:
+        Register a new user.
+        View available cars.
+        Rent a car by specifying its make, model, and year.
+        Return a rented car.
+        Check payment details.
+    Follow on-screen prompts for input.
 
-3. **Admin Options**
-   - Add new cars.
-   - Manage system data.
+Example Interaction
 
-4. **Exit**
+    Register a user with their name, address, and phone number.
+    View a list of available cars for rent.
+    Rent a car by specifying its details.
+    Return the car and see the total payment calculated based on the time rented.
 
-### **Payment Workflow**
-1. Rent a car to generate a bill.
-2. Go to the banking module to pay the bill.
-3. Use your registered bank account to complete the transaction.
+Code Overview
+Main Components
 
----
+    Structs:
+        Car: Represents a car with details like model, make, year, rate, and availability.
+        Customer: Represents a customer with personal details and rental information.
+    Functions:
+        addCar: Adds cars to the system.
+        displayCars: Displays all available cars.
+        addUser: Registers new customers.
+        rentCar: Assigns a car to a user and starts the rental timer.
+        returnCar: Returns the car and ends the rental timer.
+        handlePayment: Calculates and displays the payment details.
 
-## Example Output
+Future Enhancements
 
-```plaintext
-Welcome to the Car Rental System!
+    Add support for multiple branches (e.g., different locations for car rentals).
+    Implement database integration for persistent data storage.
+    Introduce a graphical user interface (GUI) for enhanced user experience.
+    Add features like advanced search filters for cars and customer rental history.
 
-1. Register as a customer.
-2. View available cars.
-3. Rent a car.
-4. Check outstanding bill.
-5. Pay using bank account.
-6. Exit.
+License
 
-Please select an option: 3
-Enter your name: John Doe
-Available Cars:
-1. Toyota Corolla
-2. Honda Civic
-Select a car: 1
-Bill generated: $100
+This project is open-source and available under the MIT License.
+Acknowledgments
 
-Go to the banking module to pay your bill.
-```
+    Created using C++ for a basic demonstration of object-oriented programming and time-based calculations.
 
----
 
-## Code Highlights
-
-- **Encapsulation**: Classes and private attributes ensure data security.
-- **Inheritance**: `Bank_Customer` inherits from `Customer` to enhance functionality.
-- **Polymorphism**: Simplifies interactions between systems.
-
----
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute, please:
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m 'Add feature-name'`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
-
----
-
-## Contact
-
-For questions or feedback, please contact:
-- **Name**: [Admarspis]
-- **Email**: 1admarspias@gmail.com
-- **GitHub**: [https://github.com/admarspia](https://github.com/admarspia)
-
----
-
-Happy Coding!
-
+Feel free to customize the placeholders, like the repository link or any additional features you'd like to highlight!
