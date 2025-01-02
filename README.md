@@ -36,16 +36,67 @@ Run the Program:
 
     ./car_rental
 
-Usage
+## Usage Guide
 
-    Run the program.
-    Choose from the menu options:
-        Register a new user.
-        View available cars.
-        Rent a car by specifying its make, model, and year.
-        Return a rented car.
-        Check payment details.
-    Follow on-screen prompts for input.
+### 1. Start the Program
+- When you run the program, the system will display a menu with options:
+    - **1. Register a New User**: Allows a new customer to register by entering their name, address, and phone number.
+    - **2. View Available Cars**: Displays a list of cars that are currently available for rent, along with their details (make, model, year, and rental rate).
+    - **3. Rent a Car**: Allows the user to rent a car by entering their name and selecting a car (make, model, and year).
+    - **4. Return a Car**: Allows the user to return a rented car and mark it as available again.
+    - **5. Check Payment Details**: Displays the total payment due for a car rental based on the rental duration.
+    - **6. Exit**: Exits the program.
+
+---
+
+### 2. Register a New User
+- Choose option **1** to register a new user.
+- The system will prompt you to enter your **name**, **address**, and **phone number**.
+- If the phone number is already registered, you will be notified, and no new account will be created.
+- If registration is successful, a confirmation message will be displayed.
+
+---
+
+### 3. View Available Cars
+- Choose option **2** to view the list of available cars.
+- The system will display the following information for each available car:
+  - **Make**: The brand of the car (e.g., Toyota, Ford, Honda).
+  - **Model**: The specific model (e.g., Corolla, Mustang, Civic).
+  - **Year**: The car's year of manufacture.
+  - **Rate**: The car's rental rate per second.
+
+---
+
+### 4. Rent a Car
+- Choose option **3** to rent a car.
+- You will be asked to enter your **name** (which must match an existing registered user).
+- Then, provide the **make**, **model**, and **year** of the car you wish to rent.
+- If the car is available, the system will record the start time of the rental, assign the car to you, and mark the car as unavailable.
+- A success message will confirm that the car is rented.
+
+---
+
+### 5. Return a Car
+- Choose option **4** to return a rented car.
+- You will need to enter your **name** (which must match the name of a user who has rented a car).
+- If a car is successfully rented, the system will record the end time of the rental, calculate the total rental duration, and make the car available for others.
+- A success message will confirm the car has been returned.
+
+---
+
+### 6. Check Payment Details
+- Choose option **5** to check the payment details for a rental.
+- Enter your **name** to view the payment details for the car you rented.
+- The system will display:
+  - The total time you rented the car (in seconds).
+  - The total payment due, calculated by multiplying the rental time by the car's rate.
+- Once the payment is processed, the car rental details will be cleared.
+
+---
+
+### Example Interaction
+#### Scenario 1: Register a User
+
 
 Example Interaction
 
