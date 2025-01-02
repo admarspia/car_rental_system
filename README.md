@@ -22,7 +22,7 @@ A simple and interactive car rental system implemented in C++. This project allo
 ## How to Run
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/car-rental-system.git
+   git clone https://github.com/admarspia/car-rental-system.git
 
     Navigate to the Project Directory:
 
