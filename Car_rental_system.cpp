@@ -66,8 +66,8 @@ int main() {
 
         // Check for invalid input
         if (cin.fail() || choice < 1 || choice > 6) {
-            cin.clear(); 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "\nInvalid input. Please enter a number between 1 and 6.\n" << endl;
             continue;
         }
@@ -109,11 +109,11 @@ void addCar(vector<Car>& cars, const string& model, const string& made, int year
 void displayCars(const vector<Car>& cars) {
     cout << "\nAvailable Cars:\n";
     cout << left << setw(15) << "Made" << setw(15) << "Model" << setw(10) << "Year" << setw(10) << "Rate ($/s)" << endl;
-    
+
     // Loop through the cars and display those that are available
     for (const auto& car : cars) {
         if (car.isAvailable) {
-            cout << left << setw(15) << car.made << setw(15) << car.model 
+            cout << left << setw(15) << car.made << setw(15) << car.model
                  << setw(10) << car.year << setw(10) << car.paymentPerSecond << endl;
         }
     }
@@ -143,7 +143,7 @@ void addUser(vector<Customer>& customers) {
     // If user not found, register new user
     if (!customer) {
         customers.push_back({name, address, phone, false, nullptr});
-        cout << "User registered successfully.\n";        
+        cout << "User registered successfully.\n";
         return;
     }
     else {
@@ -191,7 +191,7 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
             break;
         }
     }
-    
+
     // If car is available, assign it to the customer and start rental
     if (!car) {
         cout << "Car not available or not found.\n";
