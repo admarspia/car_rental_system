@@ -75,12 +75,67 @@ Future Enhancements
     Introduce a graphical user interface (GUI) for enhanced user experience.
     Add features like advanced search filters for cars and customer rental history.
 
-License
+## Example Output
 
-This project is open-source and available under the MIT License.
-Acknowledgments
+```plaintext
 
-    Created using C++ for a basic demonstration of object-oriented programming and time-based calculations.
+    -----------------------------------
+        Welcome to Car Rental System
+    -----------------------------------
+    1. Register a New User
+    2. View Available Cars
+    3. Rent a Car
+    4. Return a Car
+    5. Check Payment Details
+    6. Exit
+    -----------------------------------
+    Enter your choice (1-6): 1
+    
+    Enter your name: Hanan
+    Enter your address: dessie
+    Enter your phone number: 09********
+    User registered successfully.
+  
+    -----------------------------------
+  
+    Enter your choice (1-6): 2
+    
+    Available Cars:
+    Made           Model          Year      Rate ($/s)
+    Toyota         Toyota Corolla 2022      0.01      
+    Ford           Ford Mustang   2021      0.01      
+    Honda          Honda Civic    2020      0.02      
+    Chevrolet      Chevrolet Camaro2019      0.03   
 
+    -----------------------------------
+                    -
+    -----------------------------------
+                    -
+    -----------------------------------
+```
+
+---
+
+
+
+Contributing
+
+Contributions are welcome! If you'd like to contribute, please:
+
+    Fork the repository.
+    Create a feature branch: git checkout -b feature-name.
+    Commit your changes: git commit -m 'Add feature-name'.
+    Push to the branch: git push origin feature-name.
+    Open a pull request.
+
+Contact
+
+For questions or feedback, please contact:
+
+    Name: [Admarspis]
+    Email: 1admarspias@gmail.com
+    GitHub: https://github.com/admarspia
+
+Happy Coding!
 
 Feel free to customize the placeholders, like the repository link or any additional features you'd like to highlight!
