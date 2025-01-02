@@ -8,24 +8,27 @@
 using namespace std;
 using namespace std::chrono;
 
+// Define structure for storing car information
 struct Car {
-    string model;
-    string made;
-    int year;
-    double paymentPerSecond;
-    bool isAvailable;
+    string model;               // Car model
+    string made;                // Car make (manufacturer)
+    int year;                   // Car manufacture year
+    double paymentPerSecond;    // Payment rate per second
+    bool isAvailable;           // Availability status of the car
 };
 
+// Define structure for storing customer information
 struct Customer {
-    string name;
-    string address;
-    string phone;
-    bool hasRentedCar;
-    Car* rentedCar;
-    high_resolution_clock::time_point startTime;
-    high_resolution_clock::time_point endTime;
+    string name;                            // Customer name
+    string address;                         // Customer address
+    string phone;                           // Customer phone number
+    bool hasRentedCar;                      // Flag to check if the customer has rented a car
+    Car* rentedCar;                         // Pointer to the rented car
+    high_resolution_clock::time_point startTime;   // Start time of car rental
+    high_resolution_clock::time_point endTime;     // End time of car rental
 };
 
+// Function prototypes
 void addCar(vector<Car>& cars, const string& model, const string& made, int year, double paymentPerSecond);
 void displayCars(const vector<Car>& cars);
 void addUser(vector<Customer>& customers);
@@ -34,15 +37,17 @@ void returnCar(vector<Customer>& customers);
 void handlePayment(vector<Customer>& customers);
 
 int main() {
-    vector<Car> cars;
-    vector<Customer> customers;
+    vector<Car> cars;            // List to store available cars
+    vector<Customer> customers;  // List to store registered customers
 
+    // Add some initial cars to the system
     addCar(cars, "Toyota Corolla", "Toyota", 2022, 0.01);
     addCar(cars, "Ford Mustang", "Ford", 2021, 0.01);
     addCar(cars, "Honda Civic", "Honda", 2020, 0.02);
     addCar(cars, "Chevrolet Camaro", "Chevrolet", 2019, 0.03);
 
     while (true) {
+        // Display the main menu
         cout << "\n-----------------------------------" << endl;
         cout << "      Welcome to Car Rental System" << endl;
         cout << "-----------------------------------" << endl;
@@ -58,7 +63,7 @@ int main() {
         int choice;
         cin >> choice;
 
-    
+        // Check for invalid input
         if (cin.fail() || choice < 1 || choice > 6) {
             cin.clear(); 
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
@@ -66,25 +71,26 @@ int main() {
             continue;
         }
 
+        // Handle user menu selection
         switch (choice) {
             case 1:
-                addUser(customers);
+                addUser(customers);  // Register a new user
                 break;
             case 2:
-                displayCars(cars);
+                displayCars(cars);  // Display available cars
                 break;
             case 3:
-                rentCar(cars, customers);
+                rentCar(cars, customers);  // Rent a car
                 break;
             case 4:
-                returnCar(customers);
+                returnCar(customers);  // Return a car
                 break;
             case 5:
-                handlePayment(customers);
+                handlePayment(customers);  // Handle payment details
                 break;
             case 6:
                 cout << "\nThank you for using the Car Rental System. Have a great day!\n" << endl;
-                return 0;
+                return 0;  // Exit the program
             default:
                 cout << "\nAn unexpected error occurred. Please try again.\n" << endl;
                 break;
@@ -93,14 +99,17 @@ int main() {
     return 0;
 }
 
-
+// Function to add a car to the system
 void addCar(vector<Car>& cars, const string& model, const string& made, int year, double paymentPerSecond) {
-    cars.push_back({model, made, year, paymentPerSecond, true});
+    cars.push_back({model, made, year, paymentPerSecond, true});  // Add car to the list of cars
 }
 
+// Function to display available cars
 void displayCars(const vector<Car>& cars) {
     cout << "\nAvailable Cars:\n";
     cout << left << setw(15) << "Made" << setw(15) << "Model" << setw(10) << "Year" << setw(10) << "Rate ($/s)" << endl;
+    
+    // Loop through the cars and display those that are available
     for (const auto& car : cars) {
         if (car.isAvailable) {
             cout << left << setw(15) << car.made << setw(15) << car.model 
@@ -109,6 +118,7 @@ void displayCars(const vector<Car>& cars) {
     }
 }
 
+// Function to register a new customer
 void addUser(vector<Customer>& customers) {
     string name, address, phone;
     cout << "\nEnter your name: ";
@@ -120,6 +130,8 @@ void addUser(vector<Customer>& customers) {
     cin >> phone;
 
     Customer* customer = nullptr;
+
+    // Check if the phone number already exists in the system
     for (auto& cust : customers) {
         if (cust.phone == phone) {
             customer = &cust;
@@ -127,18 +139,18 @@ void addUser(vector<Customer>& customers) {
         }
     }
 
+    // If user not found, register new user
     if (!customer) {
         customers.push_back({name, address, phone, false, nullptr});
-        cout << "User registered successfully.\n";        return;
+        cout << "User registered successfully.\n";        
+        return;
     }
-    else{
-        cout << "Acount already in use please check out your name and phone number." << endl;
+    else {
+        cout << "Account already in use. Please check your name and phone number.\n";
     }
-
-    customers.push_back({name, address, phone, false, nullptr});
-    cout << "User registered successfully.\n";
 }
 
+// Function to rent a car
 void rentCar(vector<Car>& cars, vector<Customer>& customers) {
     string userName, model, made;
     int year;
@@ -147,6 +159,7 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
     cin.ignore();
     getline(cin, userName);
 
+    // Find the customer by name
     Customer* customer = nullptr;
     for (auto& cust : customers) {
         if (cust.name == userName) {
@@ -155,11 +168,13 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
         }
     }
 
+    // If customer is not found, prompt to register first
     if (!customer) {
         cout << "User not found! Please register first.\n";
         return;
     }
 
+    // Get car details to rent
     cout << "Enter the car make: ";
     getline(cin, made);
     cout << "Enter the car model: ";
@@ -167,6 +182,7 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
     cout << "Enter the car year: ";
     cin >> year;
 
+    // Find the car in the system
     Car* car = nullptr;
     for (auto& c : cars) {
         if (c.made == made && c.model == model && c.year == year && c.isAvailable) {
@@ -175,6 +191,7 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
         }
     }
     
+    // If car is available, assign it to the customer and start rental
     if (!car) {
         cout << "Car not available or not found.\n";
         return;
@@ -182,11 +199,12 @@ void rentCar(vector<Car>& cars, vector<Customer>& customers) {
 
     customer->rentedCar = car;
     customer->hasRentedCar = true;
-    customer->startTime = high_resolution_clock::now();
-    car->isAvailable = false;
+    customer->startTime = high_resolution_clock::now();  // Start rental time
+    car->isAvailable = false;  // Mark the car as unavailable
     cout << "Car rented successfully.\n";
 }
 
+// Function to return a rented car
 void returnCar(vector<Customer>& customers) {
     string userName;
 
@@ -194,6 +212,7 @@ void returnCar(vector<Customer>& customers) {
     cin.ignore();
     getline(cin, userName);
 
+    // Find the customer who has rented a car
     Customer* customer = nullptr;
     for (auto& cust : customers) {
         if (cust.name == userName && cust.hasRentedCar) {
@@ -202,17 +221,20 @@ void returnCar(vector<Customer>& customers) {
         }
     }
 
+    // If no rental found, prompt the user
     if (!customer) {
         cout << "No active rental found for this user.\n";
         return;
     }
 
+    // Record the return time and mark car as available
     customer->endTime = high_resolution_clock::now();
     customer->rentedCar->isAvailable = true;
     customer->hasRentedCar = false;
     cout << "Car returned successfully.\n";
 }
 
+// Function to handle payment based on rental duration
 void handlePayment(vector<Customer>& customers) {
     string userName;
 
@@ -220,6 +242,7 @@ void handlePayment(vector<Customer>& customers) {
     cin.ignore();
     getline(cin, userName);
 
+    // Find the customer who has rented a car
     Customer* customer = nullptr;
     for (auto& cust : customers) {
         if (cust.name == userName && !cust.hasRentedCar && cust.rentedCar != nullptr) {
@@ -228,15 +251,17 @@ void handlePayment(vector<Customer>& customers) {
         }
     }
 
+    // If no payment for this user , tell the user
     if (!customer) {
         cout << "No payment due for this user.\n";
         return;
     }
 
+    // Calculate the abount of time for the  rental and total payment
     auto duration = duration_cast<seconds>(customer->endTime - customer->startTime);
     double totalPayment = duration.count() * customer->rentedCar->paymentPerSecond;
     cout << "Total time rented: " << duration.count() << " seconds.\n";
     cout << "Total payment: $" << totalPayment << "\n";
 
-    customer->rentedCar = nullptr; 
+    customer->rentedCar = nullptr;  // Reset the rented car details
 }
