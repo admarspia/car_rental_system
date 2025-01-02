@@ -89,15 +89,6 @@ Future Enhancements
     5. Check Payment Details
     6. Exit
     -----------------------------------
-    Enter your choice (1-6): 1
-    
-    Enter your name: Hanan
-    Enter your address: dessie
-    Enter your phone number: 09********
-    User registered successfully.
-  
-    -----------------------------------
-  
     Enter your choice (1-6): 2
     
     Available Cars:
@@ -110,8 +101,7 @@ Future Enhancements
     -----------------------------------
                     -
     -----------------------------------
-                    -
-    -----------------------------------
+
 ```
 
 ---
