@@ -261,6 +261,23 @@ void handlePayment(vector<Customer>& customers) {
         cout << "No payment due for this user.\n";
         return;
     }
+// funcition to generate report
+
+    // Car rental stats
+    cout << "\nCar Rental Statistics:\n";
+    cout << left << setw(15) << "Made" << setw(15) << "Model" << setw(10) << "Year" << setw(15) << "Total Rentals" << endl;
+    for (const auto& car : cars) {
+        cout << left << setw(15) << car.made << setw(15) << car.model 
+             << setw(10) << car.year << setw(15) << car.totalRentals << endl;
+    }
+
+    // Top customers
+    cout << "\nTop Customers:\n";
+    cout << left << setw(20) << "Name" << setw(15) << "Phone" << setw(15) << "Total Spent" << endl;
+    for (const auto& customer : customers) {
+        cout << left << setw(20) << customer.name << setw(15) << customer.phone << setw(15) << customer.totalSpent << endl;
+    }
+}
 
     // Calculate the abount of time for the  rental and total payment
     auto duration = duration_cast<seconds>(customer->endTime - customer->startTime);
