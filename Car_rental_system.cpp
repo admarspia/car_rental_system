@@ -68,8 +68,8 @@ int main() {
         cin >> choice;
 
         if (cin.fail()  choice < 1  choice > 7) {
-            cin.clear(); 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "\nInvalid input. Please enter a number between 1 and 7.\n" << endl;
             continue;
         }
@@ -261,6 +261,46 @@ void handlePayment(vector<Customer>& customers) {
         cout << "No payment due for this user.\n";
         return;
     }
+    void handlePayment(vector<Customer>& customers) {
+    string userName;
+
+    cout << "\nEnter your name: ";
+    cin.ignore();
+    getline(cin, userName);
+
+    Customer* customer = nullptr;
+    for (auto& cust : customers) {
+        if (cust.name == userName && !cust.hasRentedCar && cust.rentedCar != nullptr) {
+            customer = &cust;
+            break;
+        }
+    }
+
+    if (!customer) {
+        cout << "No pending payment found for this user.\n";
+        return;
+    }
+
+    auto duration = duration_cast<seconds>(customer->endTime - customer->startTime);
+    double totalPayment = duration.count() * customer->rentedCar->paymentPerSecond;
+
+    // Display payment details
+    cout << "\nPayment Details:\n";
+    cout << "-----------------------------------\n";
+    cout << "Car Model: " << customer->rentedCar->model << "\n";
+    cout << "Car Make: " << customer->rentedCar->made << "\n";
+    cout << "Rental Duration: " << duration.count() << " seconds\n";
+    cout << "Rate (per second): $" << customer->rentedCar->paymentPerSecond << "\n";
+    cout << "Total Payment: $" << fixed << setprecision(2) << totalPayment << "\n";
+    cout << "-----------------------------------\n";
+
+    // Reset customer rental details
+    customer->rentedCar = nullptr;
+    customer->startTime = {};
+    customer->endTime = {};
+
+    cout << "Payment completed successfully. Thank you!\n";
+}
 
     // Calculate the abount of time for the  rental and total payment
     auto duration = duration_cast<seconds>(customer->endTime - customer->startTime);
