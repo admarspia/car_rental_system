@@ -78,9 +78,7 @@ int main() {
             case 1:
                 addUser(customers);
                 break;
-            case 2:
-                displayCars(cars);
-                break;
+
             case 3:
                 rentCar(cars, customers);
                 break;
@@ -109,19 +107,6 @@ void addCar(vector<Car>& cars, const string& model, const string& made, int year
     cars.push_back({model, made, year, paymentPerSecond, true});  // Add car to the list of cars
 }
 
-// Function to display available cars
-void displayCars(const vector<Car>& cars) {
-    cout << "\nAvailable Cars:\n";
-    cout << left << setw(15) << "Made" << setw(15) << "Model" << setw(10) << "Year" << setw(10) << "Rate ($/s)" << endl;
-
-    // Loop through the cars and display those that are available
-    for (const auto& car : cars) {
-        if (car.isAvailable) {
-            cout << left << setw(15) << car.made << setw(15) << car.model
-                 << setw(10) << car.year << setw(10) << car.paymentPerSecond << endl;
-        }
-    }
-}
 
 // Function to register a new customer
 void addUser(vector<Customer>& customers) {
